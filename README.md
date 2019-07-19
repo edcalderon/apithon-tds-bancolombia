@@ -1,5 +1,5 @@
 #  simple-rest-server
-This the rest API built on top of [expressjs](https://expressjs.com/) to get the tracker data for unergy project. 
+This is a rest API built on top of [expressjs](https://expressjs.com/) to get the tracker data for unergy project. 
 
 # Runing the server
 You will need nodejs and npm to be installed on your system.
