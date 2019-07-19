@@ -4,8 +4,6 @@ const path = require('path')
 const PORT = process.env.PORT || 5000;
 const Web3 = require('web3') 
 
-
-
 //Prueba Actualizar Archivo HOSTINGER
 if (typeof web3 !== 'undefined') {
     // Use Mist/MetaMask's provider
@@ -23,23 +21,40 @@ const contractAddress = '0xc5b9443dd60d3997b47b7d7f411564a8489449dc'
 const contract = abi.at(contractAddress)
 
 
-contract.Hashlength((err,n)=>{
-      console.log("Longitud del vector: " +n.c[0])
-      n.onload=iterarV(n);
-});
-
-
-function iterarV(n) {
-length=n.c[0]
-     for (i=0;i<length; i++) {
-       
-      contract.hashes(i,(err,data)=> {
-
-      data.onload=console.log(data);
-      
-      });
-     }
+/* var data =  
+{
+"info": {
+    "hashlengt": "",
+    "name": "getdata",
+    "schema": ""
+},
+"txs": [
+            {
+                "hash": "",
+                "energy": "",
+                "timestap": "",
+                "ownerWallet": ""        
+            }
+    ]
+} */
+var o = { test: 'This is a simple test' };
+function modifyTest(x, name){
+    x[name] = 'modified test text';
 }
+modifyTest(o, 'test');
+console.log(o.test);
+
+var data = []
+
+contract.Hashlength((err,res) => {
+      console.log("Longitud del vector: " + res.c[0])
+      for (i = 0 ; i < res.c[0]; i++) {              
+        contract.hashes(i,(err,dataout) => {
+           data.push(dataout)
+           console.log(data)
+        });  
+    }
+})
 
 express()
 .use(bodyParser.json())
@@ -48,11 +63,19 @@ express()
     res.render('index', {});
 })
 .get('/getdata',  (req, res) => {
-    res.json({data: "" })
+    contract.Hashlength((err,resp) => {
+        console.log("Longitud del vector: " + resp.c[0])
+        for (i = 0 ; i < resp.c[0]; i++) {              
+          contract.hashes(i,(err,dataout) => {
+             data.push(dataout)     
+          });  
+        }
+    })  
+    res.json({data: data})
 })
 .get('/getdata/:id',  (req, res) => {
     let id = req.params.id
-    res.json({data: ""})
+    res.json({data: data})
 })
 .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
