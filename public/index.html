@@ -3,7 +3,7 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
+    <title>Unergy tracker</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>    
 </head>
 <body>
@@ -17,7 +17,7 @@
         $(function(){
             let apiUrl = 'http://localhost:5000'
             document.write('Testing server connection...')
-            $.get(apiUrl + '/parking')
+            $.get(apiUrl + '/getdata')
                 .done(() => document.write('...OK'))
                 .fail(() => document.write('...FAILED'))
         })
