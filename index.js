@@ -20,30 +20,6 @@ const abi = web3.eth.contract([{"constant":false,"inputs":[{"name":"_hash","type
 const contractAddress = '0xc5b9443dd60d3997b47b7d7f411564a8489449dc'
 const contract = abi.at(contractAddress)
 
-
-/* var data =  
-{
-"info": {
-    "hashlengt": "",
-    "name": "getdata",
-    "schema": ""
-},
-"txs": [
-            {
-                "hash": "",
-                "energy": "",
-                "timestap": "",
-                "ownerWallet": ""        
-            }
-    ]
-} */
-var o = { test: 'This is a simple test' };
-function modifyTest(x, name){
-    x[name] = 'modified test text';
-}
-modifyTest(o, 'test');
-console.log(o.test);
-
 var data = []
 
 contract.Hashlength((err,res) => {
@@ -51,7 +27,6 @@ contract.Hashlength((err,res) => {
       for (i = 0 ; i < res.c[0]; i++) {              
         contract.hashes(i,(err,dataout) => {
            data.push(dataout)
-           console.log(data)
         });  
     }
 })
@@ -64,7 +39,7 @@ express()
 })
 .get('/getdata',  (req, res) => {
     contract.Hashlength((err,resp) => {
-        console.log("Longitud del vector: " + resp.c[0])
+        //console.log("Longitud del vector: " + resp.c[0])
         for (i = 0 ; i < resp.c[0]; i++) {              
           contract.hashes(i,(err,dataout) => {
              data.push(dataout)     
@@ -75,11 +50,10 @@ express()
 })
 .get('/getdata/:id',  (req, res) => {
     let id = req.params.id
-    res.json({data: data})
+    contract.hashes(id,(err,dataout) => {
+        res.json({data: dataout})   
+     });  
 })
 .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
-function getRecordById(data, id) {
-    let obj = find(data, { id })
-    return obj
-}
+
