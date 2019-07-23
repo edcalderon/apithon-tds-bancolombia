@@ -32,13 +32,15 @@ contract.Hashlength((err,res) => {
 })
 
 express()
-.use(bodyParser.json())
-.use(express.static(path.join(__dirname, 'public')))
-.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+.all('*', function(req, res, next) {
+  var origin = req.get('origin'); 
+  res.header('Access-Control-Allow-Origin', origin);
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
   next();
 })
+.use(bodyParser.json())
+.use(express.static(path.join(__dirname, 'public')))
 .get('/',  (req, res) => {
     res.render('index', {});
 })
