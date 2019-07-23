@@ -34,13 +34,7 @@ contract.Hashlength((err,res) => {
 
 
 express()
-.all('*', function(req, res, next) {
-  var origin = req.get('origin'); 
-  res.header('Access-Control-Allow-Origin', origin);
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
-  next();
-})
+.use(cors())
 .use(bodyParser.json())
 .use(express.static(path.join(__dirname, 'public')))
 .get('/',  (req, res) => {
