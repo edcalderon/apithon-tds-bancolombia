@@ -3,6 +3,7 @@ const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000;
 const Web3 = require('web3') 
+const cors = require('cors')
 
 //Prueba Actualizar Archivo HOSTINGER
 if (typeof web3 !== 'undefined') {
@@ -31,6 +32,10 @@ contract.Hashlength((err,res) => {
     }
 })
 
+const corsOptions = {
+  origin: 'http://localhost'
+}
+
 express()
 .all('*', function(req, res, next) {
   var origin = req.get('origin'); 
@@ -44,7 +49,7 @@ express()
 .get('/',  (req, res) => {
     res.render('index', {});
 })
-.get('/getdata',  (req, res) => {
+.get('/getdata', cors(corsOptions), (req, res) => {
     contract.Hashlength((err,resp) => {
         //console.log("Longitud del vector: " + resp.c[0])
         for (i = 0 ; i < resp.c[0]; i++) {              
@@ -55,7 +60,7 @@ express()
     })  
     res.json({data: data})
 })
-.get('/getdata/:id',  (req, res) => {
+.get('/getdata/:id',cors(corsOptions), (req, res) => {
     let id = req.params.id
     contract.hashes(id,(err,dataout) => {
         res.json({data: dataout})   
