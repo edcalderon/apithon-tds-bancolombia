@@ -32,9 +32,6 @@ contract.Hashlength((err,res) => {
     }
 })
 
-const corsOptions = {
-  origin: 'http://localhost'
-}
 
 express()
 .all('*', function(req, res, next) {
@@ -49,7 +46,7 @@ express()
 .get('/',  (req, res) => {
     res.render('index', {});
 })
-.get('/getdata', cors(corsOptions), (req, res) => {
+.get('/getdata', cors(), (req, res) => {
     contract.Hashlength((err,resp) => {
         //console.log("Longitud del vector: " + resp.c[0])
         for (i = 0 ; i < resp.c[0]; i++) {              
@@ -60,7 +57,7 @@ express()
     })  
     res.json({data: data})
 })
-.get('/getdata/:id',cors(corsOptions), (req, res) => {
+.get('/getdata/:id',cors(), (req, res) => {
     let id = req.params.id
     contract.hashes(id,(err,dataout) => {
         res.json({data: dataout})   
