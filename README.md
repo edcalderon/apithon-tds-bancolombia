@@ -22,11 +22,11 @@ The server provides an empty HTML file in the root of the site and a "getdata" r
 For the root route, the server renders the index.html found in public directory.
 
 ## Get all data of tracker (GET /getdata)
-[http://localhost:5000/parking](http://localhost:5000/parking)
+[http://localhost:5000/getdata](http://localhost:5000/parking)
 This endpoint returns all the transaction.
 
 ## Get data from id (GET /getdata/:id)
-[http://localhost:5000/parking/1](http://localhost:5000/parking/1)
+[http://localhost:5000/getdata/1](http://localhost:5000/parking/1)
 This endpoint returns the data of one transaction by its Id.
 
 # Postman
