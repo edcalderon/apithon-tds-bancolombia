@@ -1,7 +1,7 @@
 #  simple-rest-server
 This is a rest API built on top of [expressjs](https://expressjs.com/) to get the energy trackers data for unergy project. 
-
-# Runing the server
+[app](https://unergy-tracker-api.herokuapp.com/
+# Runing the server)
 You will need nodejs and npm to be installed on your system.
 
 ## Install dependencies
