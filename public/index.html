@@ -15,7 +15,7 @@
     <script>
         
         $(function(){
-            let apiUrl = 'http://localhost'
+            let apiUrl = 'https://unergy-tracker-api.herokuapp.com'
             document.write('Testing server connection...')
             $.get(apiUrl + '/getdata')
                 .done(() => document.write('...OK'))
