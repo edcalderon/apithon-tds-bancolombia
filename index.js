@@ -40,6 +40,7 @@ express()
         }
     })  
     res.json({data: data})
+    data = []
 })
 .get('/getdata/:id',cors(), (req, res) => {
     let id = req.params.id
