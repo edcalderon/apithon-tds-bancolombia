@@ -1,0 +1,131 @@
+[
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "_hash_medidor",
+                "type": "string"
+            },
+            {
+                "name": "_energia",
+                "type": "uint256"
+            },
+            {
+                "name": "_tiempo",
+                "type": "string"
+            }
+        ],
+        "name": "nueva_medida",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "longitud_medidas",
+        "outputs": [
+            {
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "medidas",
+        "outputs": [
+            {
+                "name": "ID",
+                "type": "uint256"
+            },
+            {
+                "name": "hash_medidor",
+                "type": "string"
+            },
+            {
+                "name": "energia",
+                "type": "uint256"
+            },
+            {
+                "name": "tiempo",
+                "type": "string"
+            },
+            {
+                "name": "pk_medidor",
+                "type": "address"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "name": "pk2cuenta_medidas",
+        "outputs": [
+            {
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "",
+                "type": "address"
+            },
+            {
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "pk2medidas",
+        "outputs": [
+            {
+                "name": "ID",
+                "type": "uint256"
+            },
+            {
+                "name": "hash_medidor",
+                "type": "string"
+            },
+            {
+                "name": "energia",
+                "type": "uint256"
+            },
+            {
+                "name": "tiempo",
+                "type": "string"
+            },
+            {
+                "name": "pk_medidor",
+                "type": "address"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }
+]
