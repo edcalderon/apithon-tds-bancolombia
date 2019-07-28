@@ -26,11 +26,11 @@ For the root route, the server renders the index.html found in public directory.
 This endpoint returns all the transaction in the contract
 
 ## Get data from id (GET /getdata/:pk)
-[http://localhost:5000/getdata/1](http://localhost:5000/parking/1)
+[http://localhost:5000/getdata/x0HEX](http://localhost:5000/parking/1)
 This endpoint returns the data of one transaction by its public key
 
 ## Get data from id (GET /getlast/:pk)
-[http://localhost:5000/getdata/1](http://localhost:5000/parking/1)
+[http://localhost:5000/getlast/x0HEX](http://localhost:5000/parking/1)
 This endpoint returns the last entry by public key.
 
 # Postman
