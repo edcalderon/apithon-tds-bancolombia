@@ -40,14 +40,7 @@ express()
                 data.push(dataout)           
           });  
         }
-/*         aux = 1
-        for (i = 0 ; i < unsorted_data.length; i++) {   
-          if(unsorted_data[i].c < aux){
-            sorted_data.push(unsorted_data[i])
-            aux = unsorted_data[i]
-          }
-        }
-        console.log(dataout[0].c)   */
+
     })  
     sorted_data = data.sort(function(a, b) {
       return (a[0].c) - (b[0].c);
@@ -70,7 +63,10 @@ express()
           });  
         }
     }) 
-    res.json({data: data})
+    sorted_data = data.sort(function(a, b) {
+      return (a[0].c) - (b[0].c);
+    });
+    res.json({data: sorted_data})
     data = []
 })
 .get('/getlast/:pk',cors(), (req, res) => {
