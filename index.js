@@ -23,6 +23,7 @@ const contractAddress = '0xC6f64C8eB20d01a2A16feC69A29170B9eED65905'
 const contract = abi.at(contractAddress)
 
 var data = []
+var sorted_data = []
 
 express()
 .use(cors())
@@ -33,14 +34,25 @@ express()
 })
 .get('/getdata', cors(), (req, res) => {
     contract.longitud_medidas((err,resp) => {
-        //console.log("Longitud del vector: " + resp.c[0])
-        for (i = 0 ; i < resp.c[0]; i++) {              
+        //console.log("Longitud del vector: " + resp.c[0])  
+        for (i = 0 ; i < resp.c[0]; i++) {   
           contract.medidas(i,(err,dataout) => {
-             data.push(dataout)     
+                data.push(dataout)           
           });  
         }
+/*         aux = 1
+        for (i = 0 ; i < unsorted_data.length; i++) {   
+          if(unsorted_data[i].c < aux){
+            sorted_data.push(unsorted_data[i])
+            aux = unsorted_data[i]
+          }
+        }
+        console.log(dataout[0].c)   */
     })  
-    res.json({data: data})
+    sorted_data = data.sort(function(a, b) {
+      return (a[0].c) - (b[0].c);
+    });
+    res.json({data: sorted_data})
     data = []
 })
 .get('/getdata/:pk',cors(), (req, res) => {
