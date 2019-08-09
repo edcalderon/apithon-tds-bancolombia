@@ -15,7 +15,7 @@
     <script>
         
         $(function(){
-            let apiUrl = 'http://localhost:5000'
+            let apiUrl = 'https://apithon-tds-bancolombia.herokuapp.com/'
             document.write('Testing server connection...')
             $.get(apiUrl + '/getdata')
                 .done(() => document.write('...OK'))
